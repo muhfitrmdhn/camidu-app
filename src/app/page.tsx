@@ -1,18 +1,24 @@
-import { Button } from "@/components/ui/button";
-import { CoinsIcon } from "lucide-react";
-import Link from "next/link";
+import { Metadata } from "next";
+import { BalanceCards } from "./dashboard/_components/balance-cards";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Fina - Dashboard",
+  description: "Your personal financial dashboard",
+};
+
+export default function DashboardPage() {
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen">
-      <CoinsIcon className="text-sky-700 size-20" />
-      <h1 className="text-sky-700 text-4xl font-bold">Welcome to Camidu</h1>
-      <p className="mt-2 text-lg">Your personal finance app with AI</p>
-      <Link href="/dashboard">
-        <Button className="mt-2" size="lg">
-          Get Started
-        </Button>
-      </Link>
-    </main>
+    <div className="p-2 space-y-4">
+      <section id="header">
+        <h1 className="text-4xl font-bold text-primary">Dashboard</h1>
+        <p>
+          Get insights into your spending, track your expenses, and manage your
+          finances.
+        </p>
+      </section>
+      <section id="content">
+        <BalanceCards />
+      </section>
+    </div>
   );
 }
