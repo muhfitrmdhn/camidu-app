@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import TransactionTable from "./transaction-table";
 import { useQuery } from "@tanstack/react-query";
 import { getTransactions } from "@/features/transaction/action";
-import TransactionTable from "./transaction-table";
+import CreateTransactionCard from "./create-transaction-card";
 
 export default function Transaction() {
   const [page, setPage] = useState(1);
@@ -27,6 +28,7 @@ export default function Transaction() {
         setLimit={setLimit}
         setSearch={setSearch}
       />
+      <CreateTransactionCard refetch={refetch} />
     </div>
   );
 }
