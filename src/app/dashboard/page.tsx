@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Camidu - Dashboard",
+  title: "Fina - Dashboard",
   description: "Your personal financial dashboard",
 };
 

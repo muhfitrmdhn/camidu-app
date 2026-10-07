@@ -1,9 +1,6 @@
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "cn";
+import { cn } from "cn";
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+export { cn };
 
 export function convertToIDR(value: number) {
   return new Intl.NumberFormat("id-ID", {
