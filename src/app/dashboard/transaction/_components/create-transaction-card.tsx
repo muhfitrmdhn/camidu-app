@@ -23,12 +23,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { DatePicker } from "@/components/ui/date-picker";
 import { format } from "date-fns";
 import { useMutation } from "@tanstack/react-query";
 import { createTransaction } from "@/features/transaction/action";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { DatePicker } from "@/components/ui/date-picker";
 
 const formSchema = z.object({
   amount: z.string().min(1, "Amount is required"),
@@ -82,7 +82,7 @@ export default function CreateTransactionCard({
   };
 
   return (
-    <Card className="w-full gap-2">
+    <Card className="w-full gap-2 h-fit">
       <CardHeader className="gap-0">
         <CardTitle>Create Transaction</CardTitle>
         <CardDescription>Add a new financial activity.</CardDescription>
