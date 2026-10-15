@@ -4,7 +4,7 @@ import { Conversation } from "@/app/types/ai";
 import { createAI } from "./instance";
 import { findEmbedding, generateEmbedding } from "./embedding";
 import { Content, FunctionCall, Part } from "@google/genai";
-import { getTransactionDeclaration } from "./FunctionTransaction";
+import { getTransactionDeclaration } from "./function-transaction";
 
 export async function handleChat(
   conversation: Conversation[],
@@ -61,6 +61,7 @@ async function generalChat(conversation: Content[], isThinking?: boolean) {
       tools: [
         {
           googleSearch: {},
+          urlContext: {},
         },
       ],
       systemInstruction: `
@@ -162,7 +163,7 @@ export async function* handleChatStreaming(
     const historyChat = conversation.slice(0, -1);
     const ai = createAI();
 
-    let contents: Content[] = [
+    const contents: Content[] = [
       ...historyChat,
       {
         role: "user",
@@ -207,7 +208,16 @@ export async function* handleChatStreaming(
         model: "gemini-3.5-flash",
         contents,
         config: {
-          tools: [{ functionDeclarations: [getTransactionDeclaration] }],
+          tools: [
+            {
+              // googleSearch: {},
+              // urlContext: {},
+              functionDeclarations: [getTransactionDeclaration],
+            },
+          ],
+          // toolConfig: {
+          //   includeServerSideToolInvocations: true,
+          // },
           thinkingConfig: {
             includeThoughts: isThinking,
           },
