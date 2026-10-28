@@ -56,7 +56,7 @@ export async function handleChat(
 async function generalChat(conversation: Content[], isThinking?: boolean) {
   const ai = createAI();
   const response = await ai.models.generateContentStream({
-    model: "gemini-2.5-flash",
+    model: "gemini-3.8-flash",
     contents: [...conversation],
     config: {
       thinkingConfig: {
