@@ -18,6 +18,8 @@ CREATE TABLE IF NOT EXISTS public.transactions (
 ALTER TABLE public.transactions ENABLE ROW LEVEL SECURITY;
 
 -- Policy access untuk semua diperbolehkan
+-- Hapus policy sebelumnya agar migration bisa dijalankan ulang.
+DROP POLICY IF EXISTS "Permissive rules for all" ON public.transactions;
 CREATE POLICY "Permissive rules for all" ON public.transactions
     FOR ALL USING (true);
 
